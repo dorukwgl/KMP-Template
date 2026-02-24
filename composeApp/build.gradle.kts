@@ -1,3 +1,5 @@
+import org.jetbrains.compose.desktop.application.dsl.TargetFormat
+
 plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidKmpLibrary)
@@ -12,7 +14,7 @@ kotlin {
         minSdk = libs.versions.android.minSdk.get().toInt()
         androidResources.enable = true
     }
-    
+
     listOf(
         iosArm64(),
         iosSimulatorArm64()
@@ -22,7 +24,10 @@ kotlin {
             isStatic = true
         }
     }
-    
+
+    // Desktop (JVM) target
+    jvm()
+
     sourceSets {
         androidMain.dependencies {
             implementation(libs.compose.uiToolingPreview)
@@ -40,6 +45,23 @@ kotlin {
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
+        }
+
+        jvmMain.dependencies {
+            implementation(compose.desktop.currentOs)
+        }
+    }
+}
+
+compose.desktop {
+    application {
+        // Must point to your desktop launcher file (create it next)
+        mainClass = "com.watermelonkode.simpletemplate.MainKt"  // ← Change to your actual package + class name
+
+        nativeDistributions {
+            targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.AppImage)
+            packageName = "SimpleTemplateDesktop"
+            packageVersion = "1.0.0"
         }
     }
 }
