@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.watermelonkode.androidapp"
+    namespace = "com.doruk.androidapp"
     compileSdk = libs.versions.android.compileSdk.get().toInt()
 
     defaultConfig {
-        applicationId = "com.watermelonkode.androidapp"
+        applicationId = "com.doruk.androidapp"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1 // You can add this code into libs.versions.toml file.

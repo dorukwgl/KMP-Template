@@ -10,7 +10,7 @@ plugins {
 kotlin {
     androidLibrary {
         compileSdk = libs.versions.android.compileSdk.get().toInt()
-        namespace = "com.watermelonkode.simpletemplate"
+        namespace = "com.doruk.kmptemplate"
         minSdk = libs.versions.android.minSdk.get().toInt()
         androidResources.enable = true
     }
@@ -56,11 +56,11 @@ kotlin {
 compose.desktop {
     application {
         // Must point to your desktop launcher file (create it next)
-        mainClass = "com.watermelonkode.simpletemplate.MainKt"  // ← Change to your actual package + class name
+        mainClass = "com.doruk.kmptemplate.MainKt"  // ← Change to your actual package + class name
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.AppImage)
-            packageName = "SimpleTemplateDesktop"
+            packageName = "KMP-Template"
             packageVersion = "1.0.0"
         }
     }
